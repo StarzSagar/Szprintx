@@ -11,7 +11,6 @@
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; min-width: 320px; min-height: 100vh; }
 button, input, select { font: inherit; }
 button { color: inherit; }
 
@@ -308,7 +307,6 @@ button { color: inherit; }
   .photo-total { display: none; }
 }
 @media (max-width: 820px) {
-  body { min-width: 360px; }
   .topbar { height: 58px; padding: 0 12px; gap: 12px; }
   .brand { min-width: unset; }
   .brand div:last-child { display: none; }

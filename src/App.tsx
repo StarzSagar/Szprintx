@@ -45,7 +45,7 @@ function AppLayout({
   const isPhotoProPage = pathname === '/photo-pro';
 
   return (
-    <div className={`site-shell${isPhotoProPage ? ' editor-shell' : ''}`}>
+    <div className={`site-shell${isPhotoProPage ? ' editor-shell' : ''}${isLandingPage ? ' pixel-shell' : ''}`}>
       {isLandingPage && <Header theme={theme} onToggleTheme={onToggleTheme} />}
       <main className="site-main">
         <Routes>

@@ -550,6 +550,10 @@ html[data-theme='dark'] .upload-panel {
 }
 
 @media (max-width: 760px) {
+  .booklet-app-shell {
+    min-height: auto;
+  }
+
   .booklet-intro {
     grid-template-columns: 1fr;
   }
@@ -566,5 +570,250 @@ html[data-theme='dark'] .upload-panel {
     height: auto;
     padding-top: 14px;
     padding-bottom: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .booklet-page,
+  .booklet-page .booklet-app-shell,
+  .booklet-page .booklet-topbar,
+  .booklet-page .booklet-controls {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .booklet-page {
+    padding: 10px 12px 20px;
+  }
+
+  .booklet-page .tool-topbar {
+    margin-bottom: 10px;
+    padding: 0 2px;
+  }
+
+  .booklet-topbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .booklet-controls {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .booklet-help-link {
+    width: 100%;
+    min-width: 0;
+    min-height: 40px;
+    padding: 0 5px;
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+
+  .appearance-control {
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+    font-size: 0.65rem;
+  }
+
+  .appearance-control select {
+    width: 100%;
+    min-width: 0;
+    padding: 0.38rem 0.35rem;
+    font-size: 0.66rem;
+  }
+
+  .booklet-intro {
+    gap: 2px;
+    padding: 20px 18px 0;
+  }
+
+  .booklet-intro h1 {
+    margin: 0.25rem 0 0.55rem;
+    font-size: clamp(2rem, 9vw, 2.6rem);
+    line-height: 1.04;
+  }
+
+  .intro-copy {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .paper-preview {
+    height: 132px;
+  }
+
+  .booklet-paper {
+    width: 160px;
+    height: 100px;
+    border-radius: 14px;
+  }
+
+  .booklet-paper.paper-front {
+    gap: 12px;
+  }
+
+  .booklet-paper.paper-front i {
+    width: 34px;
+  }
+
+  .fold-line {
+    width: 180px;
+    bottom: 14px;
+  }
+
+  .booklet-workspace {
+    padding: 14px 14px 20px;
+  }
+
+  .upload-panel {
+    min-height: 250px;
+    gap: 13px;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .editor-panel {
+    border-radius: 17px;
+  }
+
+  .document-bar,
+  .selection-toolbar,
+  .range-form,
+  .pages-heading,
+  .preview-controls,
+  .page-grid,
+  .generate-bar {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .document-bar {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+
+  .document-info {
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .document-info > div {
+    min-width: 0;
+  }
+
+  .document-info strong {
+    max-width: 175px;
+    overflow: hidden;
+    font-size: 0.82rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .pdf-pill {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 auto;
+  }
+
+  .upload-link {
+    flex: 0 0 auto;
+    padding: 0.58rem 0.65rem;
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+
+  .selection-toolbar {
+    align-items: flex-start;
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+
+  .selection-actions {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .selection-actions button {
+    flex: 1 1 auto;
+    padding: 0.58rem 0.55rem;
+    font-size: 0.72rem;
+  }
+
+  .range-form {
+    align-items: stretch;
+    gap: 8px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+
+  .range-form label {
+    width: 100%;
+    font-size: 0.82rem;
+  }
+
+  .range-form input {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .range-form button {
+    width: 100%;
+  }
+
+  .pages-heading {
+    padding-top: 14px;
+  }
+
+  .preview-controls {
+    gap: 8px;
+    font-size: 0.69rem;
+  }
+
+  .preview-controls input[type='range'] {
+    min-width: 80px;
+    flex: 1;
+  }
+
+  .page-grid {
+    grid-template-columns: repeat(auto-fill, minmax(125px, 1fr)) !important;
+    gap: 9px;
+    padding-top: 13px;
+  }
+
+  .page-card {
+    min-height: 150px;
+  }
+
+  .page-card img {
+    height: 120px;
+  }
+
+  .generate-bar {
+    align-items: stretch;
+    padding-top: 14px;
+    padding-bottom: 16px;
+  }
+
+  .generate-bar .button-primary {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .booklet-notice {
+    margin: 12px 14px 16px;
+    font-size: 0.85rem;
   }
 }

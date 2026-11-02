@@ -1,12 +1,11 @@
 import { Link, NavLink } from 'react-router-dom';
-import { Moon, Sun } from 'lucide-react';
 
 interface HeaderProps {
-  theme: 'light' | 'dark';
-  onToggleTheme: () => void;
+  theme: 'light' | 'dark' | 'emerald';
+  onThemeChange: (theme: HeaderProps['theme']) => void;
 }
 
-export default function Header({ theme, onToggleTheme }: HeaderProps) {
+export default function Header({ theme, onThemeChange }: HeaderProps) {
   const navClass = ({ isActive }: { isActive: boolean }) =>
     `nav-link${isActive ? ' active' : ''}`;
 
@@ -37,9 +36,19 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
         </NavLink>
       </nav>
 
-      <button type="button" className="theme-toggle" onClick={onToggleTheme} aria-label="Toggle theme">
-        {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-      </button>
+      <label className="theme-picker">
+        <span className="sr-only">Choose color theme</span>
+        <select
+          className="theme-select"
+          value={theme}
+          onChange={(event) => onThemeChange(event.target.value as HeaderProps['theme'])}
+          aria-label="Choose color theme"
+        >
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="emerald">Emerald Glow</option>
+        </select>
+      </label>
     </header>
   );
 }

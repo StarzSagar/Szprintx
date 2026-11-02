@@ -1,16 +1,16 @@
 .booklet-guide-page {
-  color-scheme: light;
-  --guide-blue: #3478f6;
-  --guide-blue-dark: #2259c4;
-  --guide-text: #1e293b;
-  --guide-muted: #61728a;
-  --guide-border: #dce5f0;
-  --guide-surface: #fff;
+  --guide-blue: var(--primary);
+  --guide-blue-dark: var(--primary);
+  --guide-text: var(--text);
+  --guide-muted: var(--muted);
+  --guide-border: var(--line);
+  --guide-surface: var(--surface-strong);
+  --guide-tint: var(--bg-strong);
   min-height: 100vh;
   color: var(--guide-text);
   background:
-    radial-gradient(ellipse at 86% 4%, rgba(52, 120, 246, 0.1), transparent 30%),
-    #f5f8fc;
+    radial-gradient(ellipse at 86% 4%, var(--primary-soft), transparent 32%),
+    var(--bg);
 }
 
 .guide-topbar {
@@ -52,8 +52,8 @@
   height: 34px;
   place-items: center;
   border-radius: 10px;
-  background: linear-gradient(135deg, #3478f6, #69a6ff);
-  color: white;
+  background: linear-gradient(135deg, var(--primary), var(--primary));
+  color: var(--bg);
   font-weight: 800;
 }
 
@@ -127,9 +127,9 @@
   margin-top: 24px;
   padding: 0 17px;
   border-radius: 11px;
-  background: linear-gradient(120deg, #3478f6, #548cf2);
-  box-shadow: 0 10px 24px rgba(52, 120, 246, 0.2);
-  color: white;
+  background: linear-gradient(120deg, var(--primary), var(--primary));
+  box-shadow: 0 10px 24px var(--shadow);
+  color: var(--bg);
   font-size: 0.85rem;
   font-weight: 750;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
@@ -137,7 +137,7 @@
 
 .guide-primary-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(52, 120, 246, 0.27);
+  box-shadow: 0 14px 28px var(--shadow);
 }
 
 .guide-hero-visual,
@@ -146,7 +146,7 @@
   border: 1px solid var(--guide-border);
   border-radius: 23px;
   background: var(--guide-surface);
-  box-shadow: 0 22px 55px rgba(31, 57, 91, 0.07);
+  box-shadow: 0 22px 55px var(--shadow);
 }
 
 .guide-hero-visual {
@@ -155,8 +155,8 @@
   place-items: center;
   padding: 18px;
   background:
-    radial-gradient(circle at 85% 15%, rgba(84, 150, 255, 0.13), transparent 38%),
-    linear-gradient(135deg, var(--guide-surface), rgba(226, 239, 255, 0.72));
+    radial-gradient(circle at 85% 15%, var(--primary-soft), transparent 38%),
+    linear-gradient(135deg, var(--guide-surface), var(--guide-tint));
 }
 
 .guide-illustration {
@@ -165,6 +165,66 @@
   max-width: 520px;
   height: auto;
   overflow: visible;
+}
+
+.guide-illustration [fill="#3478f6"] {
+  fill: var(--guide-blue);
+}
+
+.guide-illustration [fill="#fff"] {
+  fill: var(--guide-surface);
+}
+
+.guide-illustration [fill="#eaf2ff"],
+.guide-illustration [fill="#dbe9ff"],
+.guide-illustration [fill="#dceaff"],
+.guide-illustration [fill="#e7f4ff"],
+.guide-illustration [fill="#f1f5f9"],
+.guide-illustration [fill="#e8edf4"],
+.guide-illustration [fill="#edf4ff"],
+.guide-illustration [fill="#dce6f2"],
+.guide-illustration [fill="#e4efff"],
+.guide-illustration [fill="#f2f5f9"] {
+  fill: var(--guide-tint);
+}
+
+.guide-illustration [fill="#65758b"],
+.guide-illustration [fill="#7b8ba1"],
+.guide-illustration [fill="#8392a7"],
+.guide-illustration [fill="#94a3b8"],
+.guide-illustration [fill="#a9bad0"] {
+  fill: var(--guide-muted);
+}
+
+.guide-illustration [stroke="#3478f6"] {
+  stroke: var(--guide-blue);
+}
+
+.guide-illustration [stroke="#b8c5d8"],
+.guide-illustration [stroke="#92a6c1"],
+.guide-illustration [stroke="#9eb5d3"],
+.guide-illustration [stroke="#c2d0e2"],
+.guide-illustration [stroke="#8ba4c3"],
+.guide-illustration [stroke="#c3ccda"],
+.guide-illustration [stroke="#cbd5e1"],
+.guide-illustration [stroke="#d3dbe6"],
+.guide-illustration [stroke="#9aabc0"],
+.guide-illustration [stroke="#c7d7eb"],
+.guide-illustration [stroke="#8296b1"],
+.guide-illustration [stroke="#a9b8cb"],
+.guide-illustration [stroke="#cad4e1"],
+.guide-illustration [stroke="#bac5d3"],
+.guide-illustration [stroke="#a7b6c8"],
+.guide-illustration [stroke="#d7e1ef"],
+.guide-illustration [stroke="#8db2ef"] {
+  stroke: var(--guide-border);
+}
+
+.guide-illustration [stroke="#65758b"],
+.guide-illustration [stroke="#8392a7"],
+.guide-illustration [stroke="#7b8ba1"],
+.guide-illustration [stroke="#94a3b8"] {
+  stroke: var(--guide-muted);
 }
 
 .guide-selection-art {
@@ -209,14 +269,14 @@
   border-radius: 18px;
   background: var(--guide-surface);
   color: var(--guide-blue);
-  box-shadow: 0 12px 30px rgba(31, 57, 91, 0.045);
+  box-shadow: 0 12px 30px var(--shadow);
 }
 
 .guide-step-index {
   position: absolute;
   top: 17px;
   right: 18px;
-  color: #a9bad0;
+  color: var(--guide-muted);
   font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -251,7 +311,7 @@
   padding: 5px;
   border: 1px solid var(--guide-border);
   border-radius: 13px;
-  background: color-mix(in srgb, var(--guide-surface) 75%, #e9f1fc);
+  background: color-mix(in srgb, var(--guide-surface) 75%, var(--guide-tint));
 }
 
 .guide-tabs button {
@@ -275,7 +335,7 @@
 .guide-tabs button[aria-selected='true'] {
   background: var(--guide-surface);
   color: var(--guide-blue);
-  box-shadow: 0 2px 8px rgba(31, 57, 91, 0.1);
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 .guide-duplex-panel {
@@ -283,7 +343,7 @@
   border: 1px solid var(--guide-border);
   border-radius: 22px;
   background: var(--guide-surface);
-  box-shadow: 0 16px 40px rgba(31, 57, 91, 0.055);
+  box-shadow: 0 16px 40px var(--shadow);
 }
 
 .guide-duplex-panel:has(.guide-diagram-card) {
@@ -322,7 +382,7 @@
 .guide-check-list svg {
   flex: 0 0 auto;
   margin-top: 2px;
-  color: #168a70;
+  color: var(--guide-blue);
 }
 
 .guide-check-list b {
@@ -336,7 +396,7 @@
   align-items: center;
   justify-content: center;
   padding: 14px;
-  background: #f7faff;
+  background: var(--guide-tint);
   box-shadow: none;
 }
 
@@ -360,10 +420,10 @@
   align-items: flex-start;
   gap: 12px;
   padding: 15px;
-  border: 1px solid #f1c47b;
+  border: 1px solid var(--guide-border);
   border-radius: 14px;
-  background: #fff8e9;
-  color: #755316;
+  background: var(--primary-soft);
+  color: var(--guide-text);
   font-size: 0.82rem;
   line-height: 1.55;
 }
@@ -371,7 +431,7 @@
 .guide-manual-warning svg {
   flex: 0 0 auto;
   margin-top: 1px;
-  color: #b7791f;
+  color: var(--guide-blue);
 }
 
 .guide-manual-warning b {
@@ -390,7 +450,7 @@
   padding: 18px;
   border: 1px solid var(--guide-border);
   border-radius: 17px;
-  background: color-mix(in srgb, var(--guide-surface) 72%, #f2f7ff);
+  background: color-mix(in srgb, var(--guide-surface) 72%, var(--guide-tint));
 }
 
 .guide-manual-step-heading {
@@ -406,7 +466,7 @@
   flex: 0 0 auto;
   place-items: center;
   border-radius: 10px;
-  background: #e5efff;
+  background: var(--primary-soft);
   color: var(--guide-blue);
   font-size: 0.86rem;
   font-weight: 800;

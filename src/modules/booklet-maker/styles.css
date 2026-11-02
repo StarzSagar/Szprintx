@@ -1,12 +1,9 @@
 .booklet-app-shell {
-  --surface: #ffffff;
-  --surface-soft: #f5f5fb;
-  --canvas: #edf1f7;
-  --line: rgba(148, 163, 184, 0.22);
-  --text: #1f2937;
-  --muted: #64748b;
-  --accent: #3478f6;
-  --accent-gradient: linear-gradient(110deg, #3478f6, #4c7af3);
+  --surface: var(--surface-strong);
+  --surface-soft: var(--bg-strong);
+  --canvas: var(--bg);
+  --accent: var(--primary);
+  --accent-gradient: linear-gradient(110deg, var(--primary), var(--primary));
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -14,13 +11,17 @@
   color: var(--text);
 }
 
-html[data-theme='dark'] .booklet-app-shell {
-  --surface: #1b1f2a;
-  --surface-soft: #1f2533;
-  --canvas: #111827;
-  --line: rgba(148, 163, 184, 0.2);
-  --text: #eef2ff;
-  --muted: #a5b4cf;
+html[data-theme='deep-ocean'] .booklet-app-shell {
+  background:
+    radial-gradient(ellipse at 50% 0, rgba(28, 119, 117, 0.18), transparent 54%),
+    linear-gradient(180deg, #031522, #061f30 58%, #020d18);
+}
+
+html[data-theme='nether-crimson'] .booklet-app-shell,
+html[data-theme='nether-warped'] .booklet-app-shell {
+  background:
+    radial-gradient(ellipse at 50% 0, var(--primary-soft), transparent 52%),
+    var(--canvas);
 }
 
 .booklet-topbar {
@@ -90,26 +91,9 @@ html[data-theme='dark'] .booklet-app-shell {
 }
 
 .booklet-help-link:hover {
-  border-color: rgba(52, 120, 246, 0.36);
-  background: rgba(52, 120, 246, 0.1);
+  border-color: var(--primary);
+  background: var(--primary-soft);
   color: var(--accent);
-}
-
-.appearance-control {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--muted);
-  font-size: 0.72rem;
-}
-
-.appearance-control select {
-  appearance: none;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 0.6rem 1.8rem 0.6rem 0.8rem;
-  background: var(--surface-soft);
-  color: var(--text);
 }
 
 .booklet-intro {
@@ -159,12 +143,8 @@ html[data-theme='dark'] .booklet-app-shell {
   width: 190px;
   height: 120px;
   border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.9));
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
-}
-
-html[data-theme='dark'] .booklet-app-shell .booklet-paper {
-  background: linear-gradient(180deg, rgba(30,41,59,0.7), rgba(15,23,42,0.9));
+  background: linear-gradient(180deg, var(--surface-soft), var(--surface));
+  box-shadow: 0 20px 40px var(--shadow);
 }
 
 .booklet-paper.paper-back {
@@ -186,13 +166,13 @@ html[data-theme='dark'] .booklet-app-shell .booklet-paper {
   display: block;
   width: 50px;
   height: 2px;
-  background: rgba(148, 163, 184, 0.5);
+  background: var(--line);
 }
 
 .fold-line {
   position: absolute;
   width: 230px;
-  border-top: 2px dashed rgba(148, 163, 184, 0.6);
+  border-top: 2px dashed var(--line);
   bottom: 28px;
 }
 
@@ -210,14 +190,10 @@ html[data-theme='dark'] .booklet-app-shell .booklet-paper {
   justify-content: center;
   gap: 18px;
   min-height: 400px;
-  border: 1px dashed rgba(148, 163, 184, 0.5);
+  border: 1px dashed var(--line);
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--surface-soft);
   padding: 30px;
-}
-
-html[data-theme='dark'] .upload-panel {
-  background: rgba(17, 24, 39, 0.4);
 }
 
 .upload-box {
@@ -233,7 +209,7 @@ html[data-theme='dark'] .upload-panel {
   color: white;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 18px 30px rgba(52, 120, 246, 0.2);
+  box-shadow: 0 18px 30px var(--shadow);
 }
 
 .upload-box input,
@@ -256,7 +232,7 @@ html[data-theme='dark'] .upload-panel {
   border: 1px solid var(--line);
   background: var(--surface);
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 16px 40px var(--shadow);
 }
 
 .document-bar {
@@ -280,7 +256,7 @@ html[data-theme='dark'] .upload-panel {
   height: 38px;
   border-radius: 12px;
   place-items: center;
-  background: rgba(232, 240, 255, 0.8);
+  background: var(--primary-soft);
   color: var(--accent);
   font-weight: 800;
 }
@@ -387,7 +363,7 @@ html[data-theme='dark'] .upload-panel {
 .range-form button,
 .button-primary {
   background: var(--accent-gradient);
-  color: #fff;
+  color: var(--bg);
 }
 
 .pages-heading {
@@ -462,8 +438,8 @@ html[data-theme='dark'] .upload-panel {
 }
 
 .page-card.selected {
-  border-color: rgba(52, 120, 246, 0.6);
-  box-shadow: inset 0 0 0 1px rgba(52, 120, 246, 0.4);
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary-soft);
 }
 
 .page-card img {
@@ -471,7 +447,7 @@ html[data-theme='dark'] .upload-panel {
   width: 100%;
   height: 150px;
   object-fit: cover;
-  background: rgba(148, 163, 184, 0.08);
+  background: var(--surface);
 }
 
 .booklet-app-shell .page-number {
@@ -491,8 +467,8 @@ html[data-theme='dark'] .upload-panel {
   width: 24px;
   height: 24px;
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.7);
-  color: white;
+  background: var(--bg-strong);
+  color: var(--text);
   opacity: 0;
   transform: scale(0.7);
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -544,9 +520,9 @@ html[data-theme='dark'] .upload-panel {
   margin: 16px 24px 0;
   padding: 0.85rem 1rem;
   border-radius: 12px;
-  background: rgba(52, 120, 246, 0.12);
+  background: var(--primary-soft);
   color: var(--text);
-  border: 1px solid rgba(52, 120, 246, 0.2);
+  border: 1px solid var(--line);
 }
 
 @media (max-width: 760px) {
@@ -599,36 +575,19 @@ html[data-theme='dark'] .upload-panel {
   }
 
   .booklet-controls {
-    display: grid;
+    display: flex;
     width: 100%;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: stretch;
+    justify-content: flex-start;
     gap: 8px;
   }
 
   .booklet-help-link {
-    width: 100%;
+    width: auto;
     min-width: 0;
     min-height: 40px;
     padding: 0 5px;
     font-size: 0.72rem;
     white-space: nowrap;
-  }
-
-  .appearance-control {
-    min-width: 0;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 4px;
-    font-size: 0.65rem;
-  }
-
-  .appearance-control select {
-    width: 100%;
-    min-width: 0;
-    padding: 0.38rem 0.35rem;
-    font-size: 0.66rem;
   }
 
   .booklet-intro {

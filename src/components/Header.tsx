@@ -1,8 +1,11 @@
 import { Link, NavLink } from 'react-router-dom';
 
+export type ThemeMode = 'light' | 'dark' | 'emerald' | 'nether-crimson' | 'nether-warped' | 'deep-ocean';
+export type ThemeSelection = ThemeMode | 'nether' | 'auto-dark' | 'auto-light' | 'auto-all';
+
 interface HeaderProps {
-  theme: 'light' | 'dark' | 'emerald';
-  onThemeChange: (theme: HeaderProps['theme']) => void;
+  theme: ThemeSelection;
+  onThemeChange: (theme: ThemeSelection) => void;
 }
 
 export default function Header({ theme, onThemeChange }: HeaderProps) {
@@ -46,7 +49,12 @@ export default function Header({ theme, onThemeChange }: HeaderProps) {
         >
           <option value="light">Light</option>
           <option value="dark">Dark</option>
-          <option value="emerald">Emerald Glow</option>
+          <option value="emerald">Emerald</option>
+          <option value="nether">Nether</option>
+          <option value="deep-ocean">Minecraft – Deep Ocean</option>
+          <option value="auto-dark">Auto Switch — Dark Themes</option>
+          <option value="auto-light">Auto Switch — Light Themes</option>
+          <option value="auto-all">Auto Switch — All Themes</option>
         </select>
       </label>
     </header>

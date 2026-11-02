@@ -9,28 +9,6 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
-type ThemeChoice = 'light' | 'dark' | 'system';
-
-const accentOptions = [
-  '#3478F6',
-  '#8250DF',
-  '#159957',
-  '#0F9D9A',
-  '#E64980',
-  '#D97706',
-  '#DC2626',
-  '#4F46E5',
-];
-
-const gradientAccents = new Map([
-  ['#00B4DB', ['#00B4DB', '#0083B0']],
-  ['#FF5F6D', ['#FF5F6D', '#FFC371']],
-  ['#00B09B', ['#00B09B', '#96C93D']],
-  ['#8E2DE2', ['#8E2DE2', '#4A00E0']],
-  ['#F12711', ['#F12711', '#F5AF19']],
-  ['#F953C6', ['#F953C6', '#B91D73']],
-]);
-
 function arrangeBooklet(selectedPages: number[]) {
   const pages: Array<number | null> = [...selectedPages];
 
@@ -112,11 +90,6 @@ async function renderThumbnail(page: pdfjsLib.PDFPageProxy, quality: number) {
 }
 
 export default function BookletMakerApp() {
-  const [theme, setTheme] = useState<ThemeChoice>(() => {
-    const stored = localStorage.getItem('starz-booklet-theme');
-    return stored === 'light' || stored === 'dark' || stored === 'system' ? stored : 'system';
-  });
-  const [accent, setAccent] = useState(() => localStorage.getItem('starz-booklet-accent') ?? '#3478F6');
   const [fileName, setFileName] = useState('');
   const [pageCount, setPageCount] = useState(0);
   const [selectedPages, setSelectedPages] = useState<number[]>([]);
@@ -129,21 +102,6 @@ export default function BookletMakerApp() {
 
   const pdfBytesRef = useRef<Uint8Array | null>(null);
   const pdfDocRef = useRef<pdfjsLib.PDFDocumentProxy | null>(null);
-
-  useEffect(() => {
-    const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
-    document.documentElement.style.setProperty('--booklet-accent', accent);
-    document.documentElement.style.setProperty(
-      '--booklet-accent-gradient',
-      gradientAccents.get(accent)
-        ? `linear-gradient(110deg, ${gradientAccents.get(accent)![0]}, ${gradientAccents.get(accent)![1]})`
-        : accent,
-    );
-    document.documentElement.style.setProperty('--booklet-accent-hover', accent);
-    localStorage.setItem('starz-booklet-theme', theme);
-    localStorage.setItem('starz-booklet-accent', accent);
-  }, [theme, accent]);
 
   const updateSelection = (pages: number[]) => {
     setSelectedPages(toSortedList(pages));
@@ -310,7 +268,7 @@ export default function BookletMakerApp() {
   };
 
   return (
-    <div className="booklet-app-shell" style={{ ['--accent' as string]: accent }}>
+    <div className="booklet-app-shell">
       <header className="booklet-topbar">
         <div className="brand-block">
           <span className="brand-badge">S</span>
@@ -324,23 +282,6 @@ export default function BookletMakerApp() {
           <Link className="booklet-help-link" to="/booklet-maker/how-to-use">
             How to use
           </Link>
-          <label className="appearance-control">
-            <span>Theme</span>
-            <select value={theme} onChange={(event) => setTheme(event.target.value as ThemeChoice)}>
-              <option value="light">Light</option>
-              <option value="dark">Dark</option>
-              <option value="system">System default</option>
-            </select>
-          </label>
-
-          <label className="appearance-control accent-control">
-            <span>Accent</span>
-            <select value={accent} onChange={(event) => setAccent(event.target.value)}>
-              {accentOptions.map((option) => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
-          </label>
         </div>
       </header>
 
